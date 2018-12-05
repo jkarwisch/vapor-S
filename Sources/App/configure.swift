@@ -20,20 +20,27 @@ public func configure(
     // 1
     var databases = DatabasesConfig()
     // 2
+    /*
     let hostname = Environment.get("DATABASE_HOSTNAME")
         ?? "localhost"
     let username = Environment.get("DATABASE_USER") ?? "vapor"
     let databaseName = Environment.get("DATABASE_DB") ?? "vapor"
     let password = Environment.get("DATABASE_PASSWORD")
         ?? "password"
+    let port = Environment.get("DATABASE_PORT") ?? "5432"
+    */
+    let databaseUrl = Environment.get("DB_POSTGRESQL")
     // 3
+    let databaseConfig = PostgreSQLDatabaseConfig(url: databaseUrl!)
+    /*
     let databaseConfig = PostgreSQLDatabaseConfig(
         hostname: hostname,
         username: username,
         database: databaseName,
         password: password)
+    */
     // 4
-    let database = PostgreSQLDatabase(config: databaseConfig)
+    let database = PostgreSQLDatabase(config: databaseConfig!)
     // 5
     databases.add(database: database, as: .psql)
     // 6
