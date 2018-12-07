@@ -29,9 +29,9 @@ public func configure(
         ?? "password"
     let port = Environment.get("DATABASE_PORT") ?? "5432"
     */
-    let databaseUrl = Environment.get("DB_POSTGRESQL")
+    let databaseUrl = Environment.get("DB_POSTGRESQL") ?? "postgresql://vapor:password@localhost:5432/vapor"
     // 3
-    let databaseConfig = PostgreSQLDatabaseConfig(url: databaseUrl!)
+    let databaseConfig = PostgreSQLDatabaseConfig(url: databaseUrl)
     /*
     let databaseConfig = PostgreSQLDatabaseConfig(
         hostname: hostname,
